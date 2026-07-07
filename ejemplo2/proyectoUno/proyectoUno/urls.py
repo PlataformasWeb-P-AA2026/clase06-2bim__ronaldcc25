@@ -23,7 +23,6 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('administrativo.urls')),
-    path('accounts/', include('allauth.urls')),
     # http://127.0.0.1:8000/api/users
     # http://127.0.0.1:8000/api/groups
     # http://127.0.0.1:8000/api/estudiantes

@@ -26,4 +26,4 @@ class NumeroTelefonicoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = NumeroTelefonico
         # fields = ['id', 'telefono', 'tipo']
-        fields = '__all__' 
+        fields = '__all__'

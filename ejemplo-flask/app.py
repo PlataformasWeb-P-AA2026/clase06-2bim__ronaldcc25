@@ -5,7 +5,7 @@ import json
 app = Flask(__name__, template_folder='templates')
 app.config['SECRET_KEY'] = 'una-clave-secreta-000001'
 
-token = '0358ee5e99661f9b6c4d9f01f071b7f93fb2054e'
+token = 'baa3297a4c53b5516f4fc6a9cc50f859271b4cc8'
 headers = {
         "Authorization": f"Token {token}",
         "Content-Type": "application/json"
@@ -92,7 +92,7 @@ def obtener_estudiante(url):
     nombre_estudiante = json.loads(r.content)['nombre']
     return nombre_estudiante
 
-@app.route("/crear_estudiante", methods=['GET', 'POST'])
+@app.route("/crear/estudiante", methods=['GET', 'POST'])
 def agregar_estudiante():
     """
     """
@@ -110,11 +110,6 @@ def agregar_estudiante():
             'correo': correo
         }
 
-        # Configuración de los headers para la autenticación por Token
-        headers = {
-            "Authorization": f"Token {token}",
-            "Content-Type": "application/json"
-        }
 
         # Realizar la petición POST a la API de Django
         r = requests.post("http://localhost:8000/api/estudiantes/",
@@ -131,7 +126,7 @@ def agregar_estudiante():
     # Si es una petición GET o si hubo un error en POST, muestra el formulario
     return render_template("crear_estudiante.html")
 
-@app.route("/crear_numero_telefonico", methods=['GET', 'POST'])
+@app.route("/crear/numero/telefonico", methods=['GET', 'POST'])
 def crear_numero_telefonico():
     """
     """
@@ -160,7 +155,7 @@ def crear_numero_telefonico():
 
         nuevo_numero = json.loads(r.content)
         flash(f"Número '{nuevo_numero['telefono']}' creado exitosamente para el estudiante!", 'success')
-        return redirect(url_for('los_estudiantes')) # Redirigir a la lista principal o a una de números
+        return redirect(url_for('los_telefonos')) # Redirigir a la lista principal o a una de números
 
     return render_template("crear_numero_telefonico.html",
                            estudiantes=estudiantes_disponibles,
