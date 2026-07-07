@@ -21,7 +21,7 @@ def los_estudiantes():
     """
     """
     r = requests.get("http://localhost:8000/api/estudiantes/",
-            auth=('rene', '1'))
+            headers={'Authorization': 'Token a1e2f8fe4729ef9138df5ade8d3973d02d659383'})
     print("---------------------")
     print(r.content)
     print("---------------------")
